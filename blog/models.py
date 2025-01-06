@@ -17,6 +17,11 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS, default=0) # status of the article. 0 is draft, 1 is published.
     excerpt = models.TextField(blank=True) # a short description of the article.
     updated_on = models.DateTimeField(auto_now=True) # date and time the article was last updated.
+    class Meta:
+        ordering = ["-created_on"]
+    def __str__(self):
+        return f"{self.title} | written by {self.author}"
+        # return f"The title of this post is {self.title}"
 
 
 # Comment Model
